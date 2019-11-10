@@ -1,6 +1,8 @@
 package com.example.organizer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.view.View;
+import android.view.Window;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,10 +42,27 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        setColorBar();
+    }
+
+    private void setColorBar() {
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
+
+        StatusBarColor statusBarColor = new StatusBarColor();
+        Window window = getWindow();
+
+        statusBarColor.changeStatusBarColor("blue", window);
     }
 
     public void openAddNoteActivity(View view) {
         Intent intent = new Intent(this, activity_add_note.class);
+
+        startActivity(intent);
+    }
+
+    public void openActivityToDos(View view) {
+        Intent intent = new Intent(this, activity_todos.class);
 
         startActivity(intent);
     }

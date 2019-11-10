@@ -3,20 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent"
+    tools:context=".activity_todos">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -24,7 +12,7 @@
         android:layout_height="60dp"
         android:background="@drawable/button_ring"
         android:contentDescription="@string/todo"
-        android:onClick="openAddNoteActivity"
+        android:onClick="openAddToDoActivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.977"
@@ -36,6 +24,7 @@
     <Button
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textAllCaps="false"
+        android:onClick="openMainActivity"
         android:textSize="18sp"
         android:id="@+id/btn_notes"
         android:layout_width="183dp"
@@ -52,7 +41,6 @@
     <Button
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textAllCaps="false"
-        android:onClick="openActivityToDos"
         android:textSize="18sp"
         android:id="@+id/btn_todos"
         android:layout_width="183dp"
@@ -64,6 +52,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,14 +9,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 
-public class activity_add_note extends AppCompatActivity {
+public class activity_add_todo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        setContentView(R.layout.activity_add_todo);
 
-        setTitle("Edit note");
+        setTitle("Edit to-do");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -25,7 +25,7 @@ public class activity_add_note extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent myIntent = new Intent(getApplicationContext(), activity_todos.class);
         startActivityForResult(myIntent, 0);
         return true;
     }

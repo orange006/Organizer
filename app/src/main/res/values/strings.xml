@@ -9,5 +9,7 @@
     <string name="menu_home">All notes</string>
     <string name="button">Button</string>
     <string name="todo">TODO</string>
+    <string name="to_dos">To-dos</string>
+    <string name="notes">Notes</string>
 
 </resources>
