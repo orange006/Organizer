@@ -11,5 +11,14 @@
     <string name="todo">TODO</string>
     <string name="to_dos">To-dos</string>
     <string name="notes">Notes</string>
+    <string name="textview">TextView</string>
+
+    <string-array name="category_list">
+        <item>No category</item>
+        <item>Travel</item>
+        <item>Personal</item>
+        <item>Life</item>
+        <item>Work</item>
+    </string-array>
 
 </resources>
