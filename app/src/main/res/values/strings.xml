@@ -7,5 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">All notes</string>
+    <string name="button">Button</string>
+    <string name="todo">TODO</string>
 
 </resources>
