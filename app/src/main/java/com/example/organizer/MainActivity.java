@@ -9,6 +9,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.organizer.model.Note;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -19,6 +20,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
         statusBarColor.changeStatusBarColor("blue", window);
     }
 
+    public void TEST(View view) {
+        String q = Note.notes.get(0).toString();
+        TextView tv = findViewById(R.id.textView);
+        tv.setText(q);
+    }
+
     public void openAddNoteActivity(View view) {
         Intent intent = new Intent(this, activity_add_note.class);
 
@@ -65,13 +73,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, activity_todos.class);
 
         startActivity(intent);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
     }
 
     @Override

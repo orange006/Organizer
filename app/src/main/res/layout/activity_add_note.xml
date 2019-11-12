@@ -31,25 +31,17 @@
         app:layout_constraintVertical_bias="0.015" />
 
     <EditText
-        android:id="@+id/textAreaNote"
-        android:layout_width="374dp"
-        android:layout_height="600dp"
-        android:layout_marginBottom="70dp"
-        android:autofillHints=""
-        android:background="@android:color/transparent"
+        android:id="@+id/editText2"
+        android:layout_width="376dp"
+        android:layout_height="585dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:textColorHighlight="#2196F3"
-        android:textColorLink="#009688"
-        android:textCursorDrawable="@color/design_default_color_primary_dark"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
-
+        app:layout_constraintVertical_bias="0.363" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

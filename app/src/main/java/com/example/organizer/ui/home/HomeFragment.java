@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.organizer.R;
 import com.example.organizer.activity_add_note;
+import com.example.organizer.model.Note;
 
 public class HomeFragment extends Fragment {
 
