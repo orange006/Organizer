@@ -61,8 +61,11 @@ public class activity_add_note extends AppCompatActivity {
             EditText editText = findViewById(R.id.textAreaNote);
             String content = editText.getText().toString();
 
-            Note note = new Note(setDateToTextView(), category, content);
+            TextView timeNote = findViewById(R.id.timeNotes);
+
+            Note note = new Note((String)timeNote.getText(), category, content);
             note.addNote();
+
         }
 
         return true;
