@@ -16,11 +16,12 @@ import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
-import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,10 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
-    private List<Note> notes;
-    private static RecyclerView recyclerView;
-
-    private static RVAdapter adapter;
+    private List<Note> notesList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private RVAdapter mAdapter;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -57,26 +57,68 @@ public class MainActivity extends AppCompatActivity {
 
         setColorBar();
 
-        notes = new ArrayList<>();
-        Note note = new Note("time", "Life", "content");
-        Note note2 = new Note("time2", "Life2", "content2");
-        notes.add(note);
-        notes.add(note2);
+        recyclerView = findViewById(R.id.recycler_view);
+        mAdapter = new RVAdapter(notesList);
 
-        try {
-            recyclerView = this.findViewById(R.id.recViewNote);
-            recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(mAdapter);
 
-            adapter = new RVAdapter(this, notes);
-            recyclerView.setAdapter(adapter);
+        prepareMovieData();
 
-        }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
+    }
 
+    private void prepareMovieData() {
+        Note note = new Note("Mad Max: Fury Road", "Action & Adventure", "2015");
+        notesList.add(note);
+
+        note = new Note("Inside Out", "Animation, Kids & Family", "2015");
+        notesList.add(note);
+
+        note = new Note("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
+        notesList.add(note);
+
+        note = new Note("Shaun the Sheep", "Animation", "2015");
+        notesList.add(note);
+
+        note = new Note("The Martian", "Science Fiction & Fantasy", "2015");
+        notesList.add(note);
+
+        note = new Note("Mission: Impossible Rogue Nation", "Action", "2015");
+        notesList.add(note);
+
+        note = new Note("Up", "Animation", "2009");
+        notesList.add(note);
+
+        note = new Note("Star Trek", "Science Fiction", "2009");
+        notesList.add(note);
+
+        note = new Note("The LEGO Movie", "Animation", "2014");
+        notesList.add(note);
+
+        note = new Note("Iron Man", "Action & Adventure", "2008");
+        notesList.add(note);
+
+        note = new Note("Aliens", "Science Fiction", "1986");
+        notesList.add(note);
+
+        note = new Note("Chicken Run", "Animation", "2000");
+        notesList.add(note);
+
+        note = new Note("Back to the Future", "Science Fiction", "1985");
+        notesList.add(note);
+
+        note = new Note("Raiders of the Lost Ark", "Action & Adventure", "1981");
+        notesList.add(note);
+
+        note = new Note("Goldfinger", "Action & Adventure", "1965");
+        notesList.add(note);
+
+        note = new Note("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
+        notesList.add(note);
+
+        mAdapter.notifyDataSetChanged();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -86,13 +128,7 @@ public class MainActivity extends AppCompatActivity {
         StatusBarColor statusBarColor = new StatusBarColor();
         Window window = getWindow();
 
-        statusBarColor.changeStatusBarColor("blue", window);
-    }
-
-    public void TEST(View view) {
-        String q = Note.notes.get(0).toString();
-        TextView tv = findViewById(R.id.textView);
-        tv.setText(q);
+        statusBarColor.changeStatusBarColor(window);
     }
 
     public void openAddNoteActivity(View view) {

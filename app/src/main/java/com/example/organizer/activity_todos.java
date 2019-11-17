@@ -1,25 +1,19 @@
 package com.example.organizer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
-
-import com.google.android.material.navigation.NavigationView;
+import java.util.Objects;
 
 public class activity_todos extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +24,14 @@ public class activity_todos extends AppCompatActivity {
         setColorBar();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void setColorBar() {
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
 
         StatusBarColor statusBarColor = new StatusBarColor();
         Window window = getWindow();
 
-        statusBarColor.changeStatusBarColor("blue", window);
+        statusBarColor.changeStatusBarColor(window);
     }
 
     public void openMainActivity(View view) {

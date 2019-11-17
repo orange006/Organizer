@@ -11,11 +11,11 @@ public class Note {
     private String category;
     private String content;
 
-    public static List<Note> notes = new ArrayList<>();
+    //public static List<Note> notes = new ArrayList<>();
 
     public Note() {}
 
-    public Note(String date, String category, String content) {
+    public Note(String content, String category, String date) {
         id = count++;
 
         this.date = date;
@@ -23,14 +23,14 @@ public class Note {
         this.content = content;
     }
 
-    public void addNote() {
-        notes.add(this);
-    }
+//    public void addNote() {
+//        notes.add(this);
+//    }
 
-    @Override
-    public String toString() {
-        return "Id = " + id + " date: " + date + " category: " + category + " content: " + content;
-    }
+//    @Override
+//    public String toString() {
+//        return "Id = " + id + " date: " + date + " category: " + category + " content: " + content;
+//    }
 
     public int getiD() {
         return id;

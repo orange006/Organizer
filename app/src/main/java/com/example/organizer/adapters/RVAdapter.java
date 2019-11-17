@@ -1,73 +1,56 @@
 package com.example.organizer.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.organizer.R;
 import com.example.organizer.model.Note;
-
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ViewHolder>{
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
-    private LayoutInflater inflater;
-    private List<Note> notes;
+    private List<Note> notesList;
 
-    public RVAdapter(Context context, List<Note> phones) {
-        this.notes = phones;
-        this.inflater = LayoutInflater.from(context);
+    class MyViewHolder extends RecyclerView.ViewHolder {
+         private TextView content;
+         private TextView date;
+         private TextView category;
+
+         MyViewHolder(View view) {
+            super(view);
+            content = view.findViewById(R.id.rvContent);
+            date = view.findViewById(R.id.rvDate);
+            category = view.findViewById(R.id.rvCategory);
+         }
+    }
+
+    public RVAdapter(List<Note> notesList) {
+        this.notesList = notesList;
     }
 
     @NonNull
     @Override
-    public RVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.note_list_row, parent, false);
 
-        View view = inflater.inflate(R.layout.layout_listitem, parent, false);
-
-        //View view = inflater.from(parent.getContext()).inflate(R.layout.layout_listitem, parent, false);
-
-        return new ViewHolder(view);
+        return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(RVAdapter.ViewHolder holder, int position) {
-        Note note = notes.get(position);
-        holder.contentNote.setText(note.getContent());
-        holder.dateNote.setText(note.getDate());
-        holder.categoryNote.setText(note.getCategory());
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        Note note = notesList.get(position);
+
+        holder.content.setText(note.getContent());
+        holder.date.setText(note.getDate());
+        holder.category.setText(note.getCategory());
     }
 
     @Override
     public int getItemCount() {
-        int size;
-
-        if(notes != null && !notes.isEmpty()) {
-            size = notes.size();
-        }
-        else {
-            size = 0;
-        }
-
-        return size;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        private TextView contentNote;
-        private TextView dateNote;
-        private TextView categoryNote;
-
-        ViewHolder(View view){
-            super(view);
-            contentNote = view.findViewById(R.id.contentNote);
-            dateNote = view.findViewById(R.id.dateNote);
-            categoryNote = view.findViewById(R.id.categoryNote);
-        }
+        return notesList.size();
     }
 }

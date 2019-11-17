@@ -15,7 +15,6 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import com.example.organizer.model.Note;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -67,8 +66,8 @@ public class activity_add_note extends AppCompatActivity {
 
             TextView timeNote = findViewById(R.id.timeNotes);
 
-            Note note = new Note((String)timeNote.getText(), category, content);
-            note.addNote();
+//            Note note = new Note((String)timeNote.getText(), category, content);
+//            note.addNote();
 
         }
 
@@ -82,6 +81,6 @@ public class activity_add_note extends AppCompatActivity {
         StatusBarColor statusBarColor = new StatusBarColor();
         Window window = getWindow();
 
-        statusBarColor.changeStatusBarColor("blue", window);
+        statusBarColor.changeStatusBarColor(window);
     }
 }
