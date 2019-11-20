@@ -15,6 +15,9 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.organizer.model.Note;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -66,9 +69,10 @@ public class activity_add_note extends AppCompatActivity {
 
             TextView timeNote = findViewById(R.id.timeNotes);
 
-//            Note note = new Note((String)timeNote.getText(), category, content);
-//            note.addNote();
-
+            if (content.length() > 0) {
+                Note note = new Note(content, category, (String) timeNote.getText());
+                Note.notes.add(note);
+            }
         }
 
         return true;

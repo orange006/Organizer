@@ -24,15 +24,17 @@
     <TextView
         android:id="@+id/rvCategory"
         android:layout_width="match_parent"
+        android:textSize="14sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rvContent" />
+        android:layout_below="@+id/rvContent" />
 
     <TextView
         android:id="@+id/rvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:textColor="#000"
+        android:layout_marginTop="20dp"
+        android:textSize="14sp"
         tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

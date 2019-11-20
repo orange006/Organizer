@@ -11,9 +11,7 @@ public class Note {
     private String category;
     private String content;
 
-    //public static List<Note> notes = new ArrayList<>();
-
-    public Note() {}
+    public static List<Note> notes = new ArrayList<>();
 
     public Note(String content, String category, String date) {
         id = count++;
@@ -22,15 +20,6 @@ public class Note {
         this.category = category;
         this.content = content;
     }
-
-//    public void addNote() {
-//        notes.add(this);
-//    }
-
-//    @Override
-//    public String toString() {
-//        return "Id = " + id + " date: " + date + " category: " + category + " content: " + content;
-//    }
 
     public int getiD() {
         return id;

@@ -41,10 +41,17 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Note note = notesList.get(position);
 
-        holder.content.setText(note.getContent());
+        if(note.getContent().length() < 15) {
+            holder.content.setText(note.getContent());
+        }
+        else {
+            String tempContent = note.getContent().substring(0, 15) + "...";
+            holder.content.setText(tempContent);
+        }
+
         holder.date.setText(note.getDate());
         holder.category.setText(note.getCategory());
     }
