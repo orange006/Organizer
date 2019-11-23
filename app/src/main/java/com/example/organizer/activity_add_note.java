@@ -1,5 +1,6 @@
 package com.example.organizer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -15,11 +16,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import com.example.organizer.model.Note;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
 public class activity_add_note extends AppCompatActivity {
+
+    private DatabaseReference databaseReference;
+    private long idNote;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -36,6 +45,22 @@ public class activity_add_note extends AppCompatActivity {
 
         TextView timeNote = findViewById(R.id.timeNotes);
         timeNote.setText(setDateToTextView());
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Notes");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()) {
+                    idNote = (dataSnapshot.getChildrenCount());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -69,6 +94,8 @@ public class activity_add_note extends AppCompatActivity {
             if (content.length() > 0) {
                 Note note = new Note(content, category, (String) timeNote.getText());
                 Note.notes.add(note);
+
+                databaseReference.child(String.valueOf(idNote++)).setValue(note);
             }
         }
 
