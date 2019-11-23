@@ -15,7 +15,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
-import android.view.Window;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,10 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private void setColorBar() {
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
 
-        StatusBarColor statusBarColor = new StatusBarColor();
-        Window window = getWindow();
-
-        statusBarColor.changeStatusBarColor(window);
+        new StatusBarColor().changeStatusBarColor(getWindow());
     }
 
     public void openAddNoteActivity(View view) {

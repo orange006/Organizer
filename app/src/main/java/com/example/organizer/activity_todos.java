@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import java.util.Objects;
 
 public class activity_todos extends AppCompatActivity {
@@ -28,10 +27,7 @@ public class activity_todos extends AppCompatActivity {
     private void setColorBar() {
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
 
-        StatusBarColor statusBarColor = new StatusBarColor();
-        Window window = getWindow();
-
-        statusBarColor.changeStatusBarColor(window);
+        new StatusBarColor().changeStatusBarColor(getWindow());
     }
 
     public void openMainActivity(View view) {

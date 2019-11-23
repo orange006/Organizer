@@ -11,13 +11,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.organizer.model.Note;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -82,9 +79,6 @@ public class activity_add_note extends AppCompatActivity {
     private void setColorBar() {
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
 
-        StatusBarColor statusBarColor = new StatusBarColor();
-        Window window = getWindow();
-
-        statusBarColor.changeStatusBarColor(window);
+        new StatusBarColor().changeStatusBarColor(getWindow());
     }
 }
