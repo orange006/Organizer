@@ -1,4 +1,4 @@
-package com.example.organizer;
+package com.example.organizer.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -9,17 +9,20 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import com.example.organizer.MainActivity;
+import com.example.organizer.R;
 import com.example.organizer.model.Note;
+import com.example.organizer.utils.Constants;
+import com.example.organizer.utils.StatusBarColor;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,7 +30,6 @@ import java.util.Objects;
 
 public class activity_add_note extends AppCompatActivity {
 
-    private DatabaseReference databaseReference;
     private long idNote;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -46,19 +48,17 @@ public class activity_add_note extends AppCompatActivity {
         TextView timeNote = findViewById(R.id.timeNotes);
         timeNote.setText(setDateToTextView());
 
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Notes");
-
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        Constants.DATABASE_REFERENCE_NOTES.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()) {
-                    idNote = (dataSnapshot.getChildrenCount());
+                    idNote = dataSnapshot.getChildrenCount();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Log.w(null, databaseError.toException());
             }
         });
     }
@@ -70,11 +70,9 @@ public class activity_add_note extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("SimpleDateFormat")
     private String setDateToTextView() {
-        @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy h:mm a");
-
-        return dateFormat.format(new Date());
+        return new SimpleDateFormat("MMM d, yyyy h:mm a").format(new Date());
     }
 
     @Override
@@ -82,7 +80,7 @@ public class activity_add_note extends AppCompatActivity {
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivityForResult(myIntent, 0);
 
-        if (item.getItemId() == R.id.save) {
+        if (item.getItemId() == R.id.save_note) {
             Spinner spinner = findViewById(R.id.spinnerCategoryNotes);
             String category = spinner.getSelectedItem().toString();
 
@@ -92,10 +90,9 @@ public class activity_add_note extends AppCompatActivity {
             TextView timeNote = findViewById(R.id.timeNotes);
 
             if (content.length() > 0) {
-                Note note = new Note(content, category, (String) timeNote.getText());
-                Note.notes.add(note);
+                Note note = new Note(idNote, content, category, (String) timeNote.getText());
 
-                databaseReference.child(String.valueOf(idNote++)).setValue(note);
+                Constants.DATABASE_REFERENCE_NOTES.child("note_" + idNote++).setValue(note);
             }
         }
 

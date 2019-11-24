@@ -1,12 +1,12 @@
-package com.example.organizer;
+package com.example.organizer.utils;
 
 import android.graphics.Color;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
 
-class StatusBarColor {
-    void changeStatusBarColor(Window window){
+public class StatusBarColor {
+    public void changeStatusBarColor(Window window){
         if (Build.VERSION.SDK_INT >= 21) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Note {
     private static int count = 0;
-    private int id = 0;
+    private long id = 0;
 
     private String date;
     private String category;
@@ -13,15 +13,17 @@ public class Note {
 
     public static List<Note> notes = new ArrayList<>();
 
-    public Note(String content, String category, String date) {
-        id = count++;
+    public Note() {}
+
+    public Note(long id, String content, String category, String date) {
+        this.id = id;
 
         this.date = date;
         this.category = category;
         this.content = content;
     }
 
-    public int getiD() {
+    public long getiD() {
         return id;
     }
 

@@ -1,4 +1,4 @@
-package com.example.organizer;
+package com.example.organizer.activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -9,6 +9,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.example.organizer.R;
+import com.example.organizer.utils.StatusBarColor;
+
 import java.util.Objects;
 
 public class activity_add_todo extends AppCompatActivity {
@@ -28,8 +32,7 @@ public class activity_add_todo extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), activity_todos.class);
-        startActivityForResult(myIntent, 0);
+        startActivityForResult(new Intent(getApplicationContext(), activity_todos.class), 0);
         return true;
     }
 

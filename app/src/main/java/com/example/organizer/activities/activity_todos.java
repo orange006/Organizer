@@ -1,4 +1,4 @@
-package com.example.organizer;
+package com.example.organizer.activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import com.example.organizer.MainActivity;
+import com.example.organizer.R;
+import com.example.organizer.utils.StatusBarColor;
 import java.util.Objects;
 
 public class activity_todos extends AppCompatActivity {
@@ -31,14 +34,10 @@ public class activity_todos extends AppCompatActivity {
     }
 
     public void openMainActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-
-        startActivity(intent);
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     public void openAddToDoActivity(View view) {
-        Intent intent = new Intent(this, activity_add_todo.class);
-
-        startActivity(intent);
+        startActivity(new Intent(this, activity_add_todo.class));
     }
 }

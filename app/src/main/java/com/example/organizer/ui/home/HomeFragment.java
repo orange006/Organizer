@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.organizer.R;
 import com.example.organizer.adapters.RVAdapter;
 import com.example.organizer.model.Note;
+
 import java.util.Objects;
 
 public class HomeFragment extends Fragment {
@@ -33,8 +34,6 @@ public class HomeFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
 
         recyclerView.setAdapter(rvAdapter);
-
-        //rvAdapter.notifyDataSetChanged();
 
         return root;
     }
