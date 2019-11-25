@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Note {
-    private static int count = 0;
-    private long id = 0;
-
+    private long id;
     private String date;
     private String category;
     private String content;
