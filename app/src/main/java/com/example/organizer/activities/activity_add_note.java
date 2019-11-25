@@ -23,6 +23,7 @@ import com.example.organizer.utils.Constants;
 import com.example.organizer.utils.StatusBarColor;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,11 +49,13 @@ public class activity_add_note extends AppCompatActivity {
         TextView timeNote = findViewById(R.id.timeNotes);
         timeNote.setText(setDateToTextView());
 
-        Constants.DATABASE_REFERENCE_NOTES.addValueEventListener(new ValueEventListener() {
+        Query query = Constants.DATABASE_REFERENCE_NOTES.orderByKey().limitToLast(1);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()) {
-                    idNote = dataSnapshot.getChildrenCount();
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    idNote = (long) Objects.requireNonNull(child.child("iD").getValue()) + 1;
                 }
             }
 
@@ -92,7 +95,7 @@ public class activity_add_note extends AppCompatActivity {
             if (content.length() > 0) {
                 Note note = new Note(idNote, content, category, (String) timeNote.getText());
 
-                Constants.DATABASE_REFERENCE_NOTES.child("note_" + idNote++).setValue(note);
+                Constants.DATABASE_REFERENCE_NOTES.child("note_" + idNote).setValue(note);
             }
         }
 
