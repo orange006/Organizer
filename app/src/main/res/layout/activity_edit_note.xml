@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activities.activity_add_note">
+    tools:context=".activities.activity_edit_note">
 
     <TextView
-        android:id="@+id/timeNotes"
+        android:id="@+id/timeNotes_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textview"
@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <Spinner
-        android:id="@+id/spinnerCategoryNotes_add"
+        android:id="@+id/spinnerCategoryNotes_edit"
         android:entries="@array/category_list"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.015" />
 
     <EditText
-        android:id="@+id/noteTextArea_add"
+        android:id="@+id/noteTextArea_edit"
         android:layout_width="match_parent"
         android:layout_height="601dp"
         android:layout_marginTop="50dp"

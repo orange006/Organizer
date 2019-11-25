@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-                rvAdapter = new RVAdapter(Note.notes);
+                rvAdapter = new RVAdapter(getContext(), Note.notes);
 
                 recyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), LinearLayoutManager.VERTICAL));
 

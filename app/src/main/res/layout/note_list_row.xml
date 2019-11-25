@@ -10,7 +10,8 @@
     android:paddingBottom="10dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:id="@+id/note_list_row_id" >
 
     <TextView
         android:id="@+id/rvContent"

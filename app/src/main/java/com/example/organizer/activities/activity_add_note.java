@@ -39,7 +39,7 @@ public class activity_add_note extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
-        setTitle("Edit note");
+        setTitle("Add note");
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -80,14 +80,13 @@ public class activity_add_note extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
+        startActivityForResult(new Intent(getApplicationContext(), MainActivity.class), 0);
 
         if (item.getItemId() == R.id.save_note) {
-            Spinner spinner = findViewById(R.id.spinnerCategoryNotes);
+            Spinner spinner = findViewById(R.id.spinnerCategoryNotes_add);
             String category = spinner.getSelectedItem().toString();
 
-            EditText editText = findViewById(R.id.textAreaNote);
+            EditText editText = findViewById(R.id.noteTextArea_add);
             String content = editText.getText().toString();
 
             TextView timeNote = findViewById(R.id.timeNotes);
