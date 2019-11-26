@@ -83,10 +83,10 @@ public class activity_add_note extends AppCompatActivity {
         startActivityForResult(new Intent(getApplicationContext(), MainActivity.class), 0);
 
         if (item.getItemId() == R.id.save_note) {
-            Spinner spinner = findViewById(R.id.spinnerCategoryNotes_add);
+            Spinner spinner = findViewById(R.id.spinnerCategoryNotes);
             String category = spinner.getSelectedItem().toString();
 
-            EditText editText = findViewById(R.id.noteTextArea_add);
+            EditText editText = findViewById(R.id.textAreaNote);
             String content = editText.getText().toString();
 
             TextView timeNote = findViewById(R.id.timeNotes);

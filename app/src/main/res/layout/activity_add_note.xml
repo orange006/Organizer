@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <Spinner
-        android:id="@+id/spinnerCategoryNotes_add"
+        android:id="@+id/spinnerCategoryNotes"
         android:entries="@array/category_list"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.015" />
 
     <EditText
-        android:id="@+id/noteTextArea_add"
+        android:id="@+id/textAreaNote"
         android:layout_width="match_parent"
         android:layout_height="601dp"
         android:layout_marginTop="50dp"
