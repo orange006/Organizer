@@ -49,11 +49,6 @@ public class activity_add_note extends AppCompatActivity {
         return true;
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private String setDateToTextView() {
-        return new SimpleDateFormat("MMM d, yyyy h:mm a").format(new Date());
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         startActivityForResult(new Intent(getApplicationContext(), MainActivity.class), 0);
@@ -68,9 +63,12 @@ public class activity_add_note extends AppCompatActivity {
             TextView timeNote = findViewById(R.id.timeNotes);
 
             if (content.length() > 0) {
-                Note note = new Note(content, category, (String) timeNote.getText());
+                String activeId = Constants.DATABASE_REFERENCE_NOTES.push().getKey();
 
-                Constants.DATABASE_REFERENCE_NOTES.push().setValue(note);
+                Note note = new Note(activeId, content, category, (String) timeNote.getText());
+
+                assert activeId != null;
+                Constants.DATABASE_REFERENCE_NOTES.child(activeId).setValue(note);
             }
         }
 
@@ -82,5 +80,10 @@ public class activity_add_note extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.rgb(12, 68, 248)));
 
         new StatusBarColor().changeStatusBarColor(getWindow());
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private String setDateToTextView() {
+        return new SimpleDateFormat("MMM d, yyyy h:mm a").format(new Date());
     }
 }

@@ -9,10 +9,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import com.example.organizer.R;
 import com.example.organizer.utils.StatusBarColor;
-
 import java.util.Objects;
 
 public class activity_add_todo extends AppCompatActivity {

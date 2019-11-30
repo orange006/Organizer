@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Note {
+    private String id;
     private String date;
     private String category;
     private String content;
@@ -12,10 +13,15 @@ public class Note {
 
     public Note() {}
 
-    public Note(String content, String category, String date) {
+    public Note(String id, String content, String category, String date) {
+        this.id = id;
         this.date = date;
         this.category = category;
         this.content = content;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getDate() {
@@ -30,15 +36,4 @@ public class Note {
         return content;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

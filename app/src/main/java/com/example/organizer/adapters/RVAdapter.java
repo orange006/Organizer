@@ -36,7 +36,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        Note note = notesList.get(position);
+        final Note note = notesList.get(position);
 
         if(note.getContent().length() < 15) {
             holder.content.setText(note.getContent());
@@ -54,9 +54,10 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, activity_edit_note.class);
 
-                intent.putExtra("content_name", notesList.get(position).getContent());
-                intent.putExtra("date_name", notesList.get(position).getDate());
-                intent.putExtra("category_name", notesList.get(position).getCategory());
+                intent.putExtra("id_note", notesList.get(position).getId());
+                intent.putExtra("content_note", notesList.get(position).getContent());
+                intent.putExtra("date_note", notesList.get(position).getDate());
+                intent.putExtra("category_note", notesList.get(position).getCategory());
 
                 context.startActivity(intent);
             }

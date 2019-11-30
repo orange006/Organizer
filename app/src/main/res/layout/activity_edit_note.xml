@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".activities.activity_edit_note">
+    android:layout_height="match_parent"
+    tools:context=".activities.activity_edit_note" >
+
+    <Button
+        android:id="@+id/delete_note"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/delete"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:onClick="deleteNote"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinnerCategoryNotes_edit"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/timeNotes_edit"
@@ -20,9 +37,9 @@
 
     <Spinner
         android:id="@+id/spinnerCategoryNotes_edit"
-        android:entries="@array/category_list"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:entries="@array/category_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.083"
@@ -30,18 +47,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.015" />
 
+
     <EditText
         android:id="@+id/noteTextArea_edit"
         android:layout_width="match_parent"
-        android:layout_height="601dp"
+        android:layout_height="540dp"
         android:layout_marginTop="50dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
