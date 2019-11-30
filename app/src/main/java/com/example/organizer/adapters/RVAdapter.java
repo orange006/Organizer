@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.organizer.R;
 import com.example.organizer.activities.activity_edit_note;
 import com.example.organizer.model.Note;
+
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {

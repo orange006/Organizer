@@ -1,6 +1,5 @@
 package com.example.organizer.activities;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
@@ -9,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,17 +19,11 @@ import com.example.organizer.R;
 import com.example.organizer.model.Note;
 import com.example.organizer.utils.Constants;
 import com.example.organizer.utils.StatusBarColor;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
 public class activity_add_note extends AppCompatActivity {
-
-    private long idNote;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
@@ -48,22 +40,6 @@ public class activity_add_note extends AppCompatActivity {
 
         TextView timeNote = findViewById(R.id.timeNotes);
         timeNote.setText(setDateToTextView());
-
-        Query query = Constants.DATABASE_REFERENCE_NOTES.orderByKey().limitToLast(1);
-
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    idNote = (long) Objects.requireNonNull(child.child("iD").getValue()) + 1;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(null, databaseError.toException());
-            }
-        });
     }
 
     @Override
@@ -92,9 +68,9 @@ public class activity_add_note extends AppCompatActivity {
             TextView timeNote = findViewById(R.id.timeNotes);
 
             if (content.length() > 0) {
-                Note note = new Note(idNote, content, category, (String) timeNote.getText());
+                Note note = new Note(content, category, (String) timeNote.getText());
 
-                Constants.DATABASE_REFERENCE_NOTES.child("note_" + idNote).setValue(note);
+                Constants.DATABASE_REFERENCE_NOTES.push().setValue(note);
             }
         }
 
