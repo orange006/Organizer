@@ -17,6 +17,15 @@
     <string name="content">content</string>
     <string name="delete">Delete</string>
 
+
+    <string name="all_notes"><font size="16">All notes</font></string>
+    <string name="categories"><font size="20">Categories</font></string>
+    <string name="travel"><font size="16">Travel</font></string>
+    <string name="work"><font size="16">Work</font></string>
+    <string name="life"><font size="16">Life</font></string>
+    <string name="personal"><font size="16">Personal</font></string>
+    <string name="no_category"><font size="16">No category</font></string>
+
     <string-array name="category_list">
         <item>No category</item>
         <item>Travel</item>
